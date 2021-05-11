@@ -9,16 +9,17 @@ namespace Iridium_Editor.Types
     // Used to represent the length of a MIDI object (eg note or phrase)
     struct MidiLength
     {
-        private int length;
+        public int Length { get; set; }
 
         public MidiLength(int ticks)
         {
-            length = ticks;
+            Length = ticks;
         }
 
+        // Return length in terms of ticks
         public int ticks()
         {
-            return length;
+            return Length;
         }
     }
 }
