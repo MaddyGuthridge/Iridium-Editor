@@ -21,5 +21,32 @@ namespace IridiumEditor.Types
         {
             return Position;
         }
+
+        // Operator overloads
+        // Damn this is not concise
+        public static bool operator ==(MidiPos left, MidiPos right)
+        {
+            return left.Position == right.Position;
+        }
+        public static bool operator !=(MidiPos left, MidiPos right)
+        {
+            return !(left == right);
+        }
+        public static bool operator <(MidiPos left, MidiPos right)
+        {
+            return left.Position < right.Position;
+        }
+        public static bool operator >(MidiPos left, MidiPos right)
+        {
+            return left.Position > right.Position;
+        }
+        public static bool operator <=(MidiPos left, MidiPos right)
+        {
+            return !(left > right);
+        }
+        public static bool operator >=(MidiPos left, MidiPos right)
+        {
+            return !(left < right);
+        }
     }
 }
