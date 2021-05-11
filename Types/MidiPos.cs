@@ -21,9 +21,18 @@ namespace IridiumEditor.Types
         {
             return Position;
         }
-
+        
         // Operator overloads
         // Damn this is not concise
+        public override bool Equals(object? obj)
+        {
+            return obj is MidiPos pos &&
+                   Position == pos.Position;
+        }
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Position);
+        }
         public static bool operator ==(MidiPos left, MidiPos right)
         {
             return left.Position == right.Position;
