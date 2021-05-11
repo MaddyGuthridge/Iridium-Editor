@@ -4,20 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Iridium_Editor.Types
+namespace IridiumEditor.Types
 {
     // Used to represent the length of a MIDI object (eg note or phrase)
     struct MidiLength
     {
-        public int Length { get; set; }
+        public uint Length { get; set; }
 
-        public MidiLength(int ticks)
+        public MidiLength(uint ticks)
         {
             Length = ticks;
         }
 
         // Return length in terms of ticks
-        public int ticks()
+        public uint Ticks()
         {
             return Length;
         }

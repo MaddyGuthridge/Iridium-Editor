@@ -2,7 +2,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace Iridium_Editor.Views
+namespace IridiumEditor.Views
 {
     public partial class MainWindow : Window
     {

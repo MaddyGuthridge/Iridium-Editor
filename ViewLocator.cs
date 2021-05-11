@@ -1,9 +1,9 @@
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
-using Iridium_Editor.ViewModels;
+using IridiumEditor.ViewModels;
 using System;
 
-namespace Iridium_Editor
+namespace IridiumEditor
 {
     public class ViewLocator : IDataTemplate
     {

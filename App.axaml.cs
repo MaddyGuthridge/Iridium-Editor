@@ -1,10 +1,10 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
-using Iridium_Editor.ViewModels;
-using Iridium_Editor.Views;
+using IridiumEditor.ViewModels;
+using IridiumEditor.Views;
 
-namespace Iridium_Editor
+namespace IridiumEditor
 {
     public class App : Application
     {

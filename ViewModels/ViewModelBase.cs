@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Iridium_Editor.ViewModels
+namespace IridiumEditor.ViewModels
 {
     public class ViewModelBase : ReactiveObject
     {
