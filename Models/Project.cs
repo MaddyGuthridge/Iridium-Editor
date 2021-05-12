@@ -18,5 +18,11 @@ namespace IridiumEditor.Models
             details = new ProjectDetails();
         }
 
+        // Saves the project
+        public void Save()
+        {
+            // Not implemented
+        }
+
     }
 }
