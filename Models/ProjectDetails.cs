@@ -42,7 +42,5 @@ namespace IridiumEditor.Models
         private readonly DateTime _openTime;
         // Time spent working on project in previous sessions
         private readonly TimeSpan _workingTime;
-
-        
     }
 }
