@@ -6,24 +6,57 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="IridiumEditor.Views.MainWindow"
         ExtendClientAreaToDecorationsHint="True"
-        Icon="/Assets/avalonia-logo.ico"
-        Title="Iridium">
+        Icon="/Assets/Icon.png"
+        Title="Iridium"
+        MinWidth="480"
+        MinHeight="270">
   <Window.Styles>
     <Style Selector="Window[WindowState=Maximized]">
       <Setter Property="Padding" Value="8" />
     </Style>
   </Window.Styles>
 
-    <Design.DataContext>
-        <vm:MainWindowViewModel/>
-    </Design.DataContext>
-  <Panel Height="30" VerticalAlignment="Top">
-    <Button>Menu</Button>
-    <ContentControl Content="{Binding Title}"
-                    
-                    HorizontalContentAlignment="Center"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"/>
+  <Design.DataContext>
+    <vm:MainWindowViewModel/>
+  </Design.DataContext>
+
+  <!--Title Bar-->
+  <Panel>
+    <Panel Height="30" VerticalAlignment="Top">
+      <Button Width="30" Height="30">
+        <Image Source="/Assets/Icon.png" Width="30" Height="30"/>
+      </Button>
+      <ContentControl Content="{Binding Title}"
+                      IsHitTestVisible="False"
+                      Opacity="0.8"
+                      HorizontalContentAlignment="Center"
+                      VerticalAlignment="Center"
+                      HorizontalAlignment="Center"/>
+    </Panel>
+    
+    <!--Status Bar-->
+    <Panel Height="20" VerticalAlignment="Bottom" Background="Gray">
+      <DockPanel HorizontalAlignment="Left">
+        <Separator Width="5" HorizontalAlignment="Left"/>
+        <ContentControl Content="{Binding Hint}"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left"
+                        HorizontalContentAlignment="Left"/>
+      </DockPanel>
+      <DockPanel HorizontalAlignment="Right">
+        <ContentControl Content="{Binding NoteCount}"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Right"
+                        HorizontalContentAlignment="Right"/>
+        <Separator Width="5" HorizontalAlignment="Right"/>
+        <ContentControl Content="{Binding CursorPosition}"
+                      VerticalAlignment="Center"
+                      HorizontalAlignment="Right"
+                      HorizontalContentAlignment="Right"/>
+        <Separator Width="5" HorizontalAlignment="Right"/>
+      </DockPanel>
+      
+    </Panel>
   </Panel>
 
 </Window>
