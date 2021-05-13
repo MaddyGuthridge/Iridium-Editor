@@ -5,13 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="IridiumEditor.Views.MainWindow"
+        ExtendClientAreaToDecorationsHint="True"
         Icon="/Assets/avalonia-logo.ico"
         Title="Iridium">
+  <Window.Styles>
+    <Style Selector="Window[WindowState=Maximized]">
+      <Setter Property="Padding" Value="8" />
+    </Style>
+  </Window.Styles>
 
     <Design.DataContext>
         <vm:MainWindowViewModel/>
     </Design.DataContext>
-
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+  <Panel Height="30" VerticalAlignment="Top">
+    <Button>Menu</Button>
+    <ContentControl Content="{Binding Title}"
+                    
+                    HorizontalContentAlignment="Center"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"/>
+  </Panel>
 
 </Window>

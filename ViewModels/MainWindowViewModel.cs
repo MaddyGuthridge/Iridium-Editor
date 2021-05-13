@@ -6,6 +6,6 @@ namespace IridiumEditor.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        public string Greeting => "Iridium Editor";
+        public string Title => "Iridium Editor";
     }
 }
