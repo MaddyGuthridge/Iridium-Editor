@@ -13,8 +13,8 @@ namespace IridiumEditor.ViewModels
         public string NoteCount => "Note Count: 17048";
         public string CursorPosition => "13.3.120 : 12";
 
-        private int project;
-        private MainWindow window;
+        private readonly int project;
+        private readonly MainWindow window;
 
         public MainWindowViewModel(MainWindow win)
         {
@@ -24,7 +24,7 @@ namespace IridiumEditor.ViewModels
 
         public void OnTitleMenuClick()
         {
-            ProjectDetails details = new ProjectDetails(project);
+            ProjectDetails details = new(project);
             details.ShowDialog(window);
         }
     }
