@@ -7,7 +7,7 @@
         x:Class="IridiumEditor.Views.MainWindow"
         ExtendClientAreaToDecorationsHint="True"
         Icon="/Assets/Icon.png"
-        Title="Iridium"
+        Title="{Binding WindowTitle}"
         MinWidth="480"
         MinHeight="270">
   <Window.Styles>
@@ -27,7 +27,7 @@
         
         <Image Source="/Assets/Icon.png" Width="30" Height="30"/>
       </Button>
-      <ContentControl Content="{Binding Title}"
+      <ContentControl Content="{Binding WindowTitle}"
                       IsHitTestVisible="False"
                       Opacity="0.8"
                       HorizontalContentAlignment="Center"

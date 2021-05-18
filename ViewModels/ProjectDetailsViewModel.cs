@@ -17,6 +17,14 @@ namespace IridiumEditor.ViewModels
 
         public string WorkTime { get; }
 
+        public string WindowTitle
+        { 
+            get
+            {
+                return "Project Details - " + Name + " - Iridium";
+            }
+        }
+
         public ProjectDetailsViewModel(int projId)
         {
             associatedProject = projId;
