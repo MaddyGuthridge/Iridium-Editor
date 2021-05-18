@@ -1,0 +1,18 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="IridiumEditor.ProjectDetails"
+        Title="ProjectDetails"
+        CanResize="False"
+        Width="500"
+        Height="600">
+  <StackPanel Margin="10" Spacing="5">
+    <TextBox AcceptsReturn="False" AcceptsTab="False" Height="20" Text="{Binding Name}" Watermark="Name"/>
+    <TextBox AcceptsReturn="False" AcceptsTab="False" Height="20" Text="{Binding Author}" Watermark="Author"/>
+    <TextBox AcceptsReturn="True" AcceptsTab="False" Height="400" Text="{Binding Description}" Watermark="Description"/>
+    <TextBox AcceptsReturn="False" AcceptsTab="False" Height="20" Text="{Binding Copyright}" Watermark="Copyright"/>
+    <ContentControl Content="{Binding WorkTime}"/>
+  </StackPanel>
+</Window>
