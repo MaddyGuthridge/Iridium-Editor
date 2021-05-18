@@ -29,5 +29,20 @@ namespace IridiumEditor.ViewModels
             Copyright = details.Copyright;
             WorkTime = "Working time: " + details.GetWorkingTime().ToString(@"d\:hh\:mm\:ss");
         }
+
+        private void SaveDetails()
+        {
+            Models.ProjectDetails details = App.Projects.GetProject(associatedProject).details;
+
+            details.Name = Name;
+            details.Description = Description;
+            details.Author = Author;
+            details.Copyright = Copyright;
+        }
+
+        public void OnSaveClick()
+        {
+            SaveDetails();
+        }
     }
 }
