@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using IridiumEditor;
+using ReactiveUI;
 
 namespace IridiumEditor.ViewModels
 {
-    class ProjectDetailsViewModel
+    public class ProjectDetailsViewModel : ReactiveObject
     {
         private readonly int associatedProject;
         public string Name { get; set; }
