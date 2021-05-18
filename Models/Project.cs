@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace IridiumEditor.Models
 {
     // Class representing a project type
-    class Project
+    public class Project
     {
         // Project details
         public ProjectDetails details;

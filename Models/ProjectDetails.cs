@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IridiumEditor.Models
 {
-    class ProjectDetails
+    public class ProjectDetails
     {
 
         // Constructors

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace IridiumEditor.Models
 {
     // Contains all open projects
-    class ProjectContainer
+    public class ProjectContainer
     {
         private readonly Dictionary<int, Project> _openProjects;
         private readonly IdentifierGenerator _generator;
