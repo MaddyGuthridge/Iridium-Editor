@@ -2,13 +2,15 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using Avalonia.ReactiveUI;
 using IridiumEditor.ViewModels;
+using ReactiveUI;
 
 namespace IridiumEditor
 {
-    public partial class ProjectDetails : Window
+    public partial class ProjectDetailsWindow : ReactiveWindow<ProjectDetailsViewModel>
     {
-        public ProjectDetails(int projId)
+        public ProjectDetailsWindow(int projId)
         {
             DataContext = new ProjectDetailsViewModel(projId);
 
@@ -16,9 +18,10 @@ namespace IridiumEditor
 #if DEBUG
             this.AttachDevTools();
 #endif
+            this.WhenActivated(d => d(ViewModel.OkCommand.Subscribe(Close)));
         }
 
-        public ProjectDetails()
+        public ProjectDetailsWindow()
         {
             // This code is never run, I just have it here so Avalonia doesn't
             // have a hissy fit
@@ -33,12 +36,6 @@ namespace IridiumEditor
         private void InitializeComponent()
         {
             AvaloniaXamlLoader.Load(this);
-        }
-
-        public void OnClickOk(object sender, RoutedEventArgs e)
-        {
-            //DataContext.SaveDetails();
-            Close();
         }
     }
 }

@@ -3,7 +3,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="IridiumEditor.ProjectDetails"
+        x:Class="IridiumEditor.ProjectDetailsWindow"
         Title="{Binding WindowTitle}"
         CanResize="False"
         ShowInTaskbar="False"
@@ -20,7 +20,7 @@
       <TextBox AcceptsReturn="True" AcceptsTab="False" Height="400" Text="{Binding Description}" Watermark="Description"/>
       <TextBox AcceptsReturn="False" AcceptsTab="False" Height="20" Text="{Binding Copyright}" Watermark="Copyright"/>
       <ContentControl Content="{Binding WorkTime}"/>
-      <Button Click="OnOkClick" HorizontalAlignment="Right">Ok</Button>
+      <Button Click="" HorizontalAlignment="Right">Ok</Button>
     </StackPanel>
   </StackPanel>
 </Window>

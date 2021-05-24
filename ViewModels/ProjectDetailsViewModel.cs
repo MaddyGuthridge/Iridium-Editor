@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reactive;
 using System.Text;
 using System.Threading.Tasks;
 using IridiumEditor;
@@ -37,8 +38,15 @@ namespace IridiumEditor.ViewModels
             Author = details.Author;
             Copyright = details.Copyright;
             WorkTime = "Working time: " + details.GetWorkingTime().ToString(@"d\:hh\:mm\:ss");
+            
+            OkCommand = ReactiveCommand.CreateFromTask(async () =>
+            {
+                SaveDetails();
+            });
         }
 
+        public ReactiveCommand<Unit, Unit> OkCommand { get; }
+        
         private void SaveDetails()
         {
             Models.ProjectDetails details = App.Projects.GetProject(associatedProject).details;
@@ -47,11 +55,6 @@ namespace IridiumEditor.ViewModels
             details.Description = Description;
             details.Author = Author;
             details.Copyright = Copyright;
-        }
-
-        public void OnSaveClick()
-        {
-            SaveDetails();
         }
     }
 }

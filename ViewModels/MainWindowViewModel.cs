@@ -1,6 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Reactive;
+using System.Reactive.Linq;
 using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using IridiumEditor;
 using ReactiveUI;
 using IridiumEditor.Views;
 
@@ -26,8 +33,21 @@ namespace IridiumEditor.ViewModels
             project = App.Projects.CreateProject();
             window = win;
             WindowTitle = GenWindowTitle();
+            
+            ShowDetails = new Interaction<ProjectDetailsViewModel, Unit>();
+            
+            ProjectDetailsCommand = ReactiveCommand.CreateFromTask(async () =>
+            {
+                var store = new ProjectDetailsViewModel(project);
+
+                await ShowDetails.Handle(store);
+            });
         }
 
+        public Interaction<ProjectDetailsViewModel, Unit> ShowDetails { get; }
+
+        public ICommand ProjectDetailsCommand { get; }
+        
         private string GenWindowTitle()
         {
             return App.Projects.GetProject(project).details.Name + " - Iridium";
@@ -35,8 +55,8 @@ namespace IridiumEditor.ViewModels
 
         public void OnTitleMenuClick()
         {
-            ProjectDetails details = new(project);
-            details.ShowDialog(window);
+            ProjectDetailsWindow detailsWindow = new(project);
+            detailsWindow.ShowDialog(window);
             WindowTitle = GenWindowTitle();
         }
     }
