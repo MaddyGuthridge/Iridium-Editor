@@ -16,7 +16,7 @@ namespace IridiumEditor
 #if DEBUG
             this.AttachDevTools();
 #endif
-            this.WhenActivated(d => d(ViewModel.OkCommand.Subscribe(Close)));
+            this.WhenActivated(d => d(ViewModel!.OkCommand.Subscribe(Close)));
         }
 
         private void InitializeComponent()
