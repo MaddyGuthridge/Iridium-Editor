@@ -22,11 +22,11 @@ namespace IridiumEditor.Views
             this.WhenActivated(d => d(ViewModel!.ShowDetails.RegisterHandler(DoShowDetailsWindow)));
         }
         
-        private async Task DoShowDetailsWindow(InteractionContext<ProjectDetailsViewModel, Unit> interaction)
+        private async Task DoShowDetailsWindow(InteractionContext<ProjectDetailsViewModel, ProjectDetailsViewModel> interaction)
         {
             var dialog = new ProjectDetailsWindow {DataContext = interaction.Input};
 
-            await dialog.ShowDialog<Unit>(this);
+            interaction.SetOutput(await dialog.ShowDialog<ProjectDetailsViewModel>(this));
         }
 
         private void InitializeComponent()

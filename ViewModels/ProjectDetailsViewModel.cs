@@ -39,13 +39,14 @@ namespace IridiumEditor.ViewModels
             Copyright = details.Copyright;
             WorkTime = "Working time: " + details.GetWorkingTime().ToString(@"d\:hh\:mm\:ss");
             
-            OkCommand = ReactiveCommand.CreateFromTask(async () =>
+            OkCommand = ReactiveCommand.Create(() =>
             {
                 SaveDetails();
+                return this;
             });
         }
 
-        public ReactiveCommand<Unit, Unit> OkCommand { get; }
+        public ReactiveCommand<Unit, ProjectDetailsViewModel> OkCommand { get; }
         
         private void SaveDetails()
         {

@@ -32,7 +32,7 @@ namespace IridiumEditor.ViewModels
             project = App.Projects.CreateProject();
             WindowTitle = GenWindowTitle();
             
-            ShowDetails = new Interaction<ProjectDetailsViewModel, Unit>();
+            ShowDetails = new Interaction<ProjectDetailsViewModel, ProjectDetailsViewModel>();
             
             ProjectDetailsCommand = ReactiveCommand.CreateFromTask(async () =>
             {
@@ -42,7 +42,7 @@ namespace IridiumEditor.ViewModels
             });
         }
 
-        public Interaction<ProjectDetailsViewModel, Unit> ShowDetails { get; }
+        public Interaction<ProjectDetailsViewModel, ProjectDetailsViewModel> ShowDetails { get; }
 
         public ICommand ProjectDetailsCommand { get; }
         
