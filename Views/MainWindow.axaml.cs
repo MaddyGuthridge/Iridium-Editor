@@ -13,7 +13,7 @@ namespace IridiumEditor.Views
     {
         public MainWindow()
         {
-            DataContext = new MainWindowViewModel(this);
+            DataContext = new MainWindowViewModel();
 
             InitializeComponent();
 #if DEBUG
@@ -24,8 +24,7 @@ namespace IridiumEditor.Views
         
         private async Task DoShowDetailsWindow(InteractionContext<ProjectDetailsWindow, Unit> interaction)
         {
-            var dialog = new ProjectDetailsWindow();
-            dialog.DataContext = interaction.Input;
+            var dialog = new ProjectDetailsWindow {DataContext = interaction.Input};
 
             await dialog.ShowDialog<Unit>(this);
         }

@@ -26,21 +26,19 @@ namespace IridiumEditor.ViewModels
         public string CursorPosition => "13.3.120 : 12";
 
         private readonly int project;
-        private readonly MainWindow window;
 
-        public MainWindowViewModel(MainWindow win)
+        public MainWindowViewModel()
         {
             project = App.Projects.CreateProject();
-            window = win;
             WindowTitle = GenWindowTitle();
             
             ShowDetails = new Interaction<ProjectDetailsViewModel, Unit>();
             
             ProjectDetailsCommand = ReactiveCommand.CreateFromTask(async () =>
             {
-                var store = new ProjectDetailsViewModel(project);
+                var details = new ProjectDetailsViewModel(project);
 
-                await ShowDetails.Handle(store);
+                await ShowDetails.Handle(details);
             });
         }
 
@@ -51,13 +49,6 @@ namespace IridiumEditor.ViewModels
         private string GenWindowTitle()
         {
             return App.Projects.GetProject(project).details.Name + " - Iridium";
-        }
-
-        public void OnTitleMenuClick()
-        {
-            ProjectDetailsWindow detailsWindow = new(project);
-            detailsWindow.ShowDialog(window);
-            WindowTitle = GenWindowTitle();
         }
     }
 }
