@@ -1,12 +1,13 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
-
+using Avalonia.Reactive;
+using Avalonia.ReactiveUI;
 using IridiumEditor.ViewModels;
 
 namespace IridiumEditor.Views
 {
-    public partial class MainWindow : Window
+    public partial class MainWindow : ReactiveWindow<ViewModels.MainWindowViewModel>
     {
         public MainWindow()
         {

@@ -1,5 +1,6 @@
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using IridiumEditor.ViewModels;
 
@@ -19,6 +20,9 @@ namespace IridiumEditor
 
         public ProjectDetails()
         {
+            // This code is never run, I just have it here so Avalonia doesn't
+            // have a hissy fit
+            DataContext = new ProjectDetailsViewModel(0);
 
             InitializeComponent();
 #if DEBUG
@@ -29,6 +33,12 @@ namespace IridiumEditor
         private void InitializeComponent()
         {
             AvaloniaXamlLoader.Load(this);
+        }
+
+        public void OnClickOk(object sender, RoutedEventArgs e)
+        {
+            //DataContext.SaveDetails();
+            Close();
         }
     }
 }

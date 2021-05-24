@@ -1,4 +1,4 @@
-<Window xmlns="https://github.com/avaloniaui"
+ <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -20,7 +20,7 @@
       <TextBox AcceptsReturn="True" AcceptsTab="False" Height="400" Text="{Binding Description}" Watermark="Description"/>
       <TextBox AcceptsReturn="False" AcceptsTab="False" Height="20" Text="{Binding Copyright}" Watermark="Copyright"/>
       <ContentControl Content="{Binding WorkTime}"/>
-      <Button Command="{Binding OnSaveClick}" HorizontalAlignment="Right">Save</Button>
+      <Button Click="OnOkClick" HorizontalAlignment="Right">Ok</Button>
     </StackPanel>
   </StackPanel>
 </Window>

@@ -8,7 +8,7 @@ using ReactiveUI;
 
 namespace IridiumEditor.ViewModels
 {
-    public class ProjectDetailsViewModel : ReactiveObject
+    public class ProjectDetailsViewModel : ViewModelBase
     {
         private readonly int associatedProject;
         public string Name { get; set; }

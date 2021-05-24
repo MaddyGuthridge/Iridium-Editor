@@ -6,7 +6,7 @@ using IridiumEditor.Views;
 
 namespace IridiumEditor.ViewModels
 {
-    public class MainWindowViewModel : ReactiveObject
+    public class MainWindowViewModel : ViewModelBase
     {
         private string windowTitle = "";
         public string WindowTitle
