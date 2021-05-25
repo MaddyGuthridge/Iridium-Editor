@@ -25,7 +25,10 @@
       <TextBox AcceptsReturn="True" AcceptsTab="False" Height="400" Text="{Binding Description}" Watermark="Description"/>
       <TextBox AcceptsReturn="False" AcceptsTab="False" Height="20" Text="{Binding Copyright}" Watermark="Copyright"/>
       <ContentControl Content="{Binding WorkTime}"/>
-      <Button Command="{Binding OkCommand}" HorizontalAlignment="Right">Ok</Button>
+      <DockPanel>
+        <Button Command="{Binding CancelCommand}" HorizontalAlignment="Right">Cancel</Button>
+        <Button Command="{Binding OkCommand}" HorizontalAlignment="Right">Ok</Button>
+      </DockPanel>
     </StackPanel>
   </StackPanel>
 </Window>

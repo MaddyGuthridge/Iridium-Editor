@@ -44,9 +44,12 @@ namespace IridiumEditor.ViewModels
                 SaveDetails();
                 return this;
             });
+
+            CancelCommand = ReactiveCommand.Create(() => this);
         }
 
         public ReactiveCommand<Unit, ProjectDetailsViewModel> OkCommand { get; }
+        public ReactiveCommand<Unit, ProjectDetailsViewModel> CancelCommand { get; }
         
         private void SaveDetails()
         {
