@@ -3,7 +3,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:vm="using:IridiumEditor.ViewModels"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="600"
         x:Class="IridiumEditor.ProjectDetailsWindow"
         Title="{Binding WindowTitle}"
         CanResize="False"
@@ -11,18 +11,28 @@
         Icon="/Assets/Icon.png"
         Width="500"
         Height="600"
+        ExtendClientAreaToDecorationsHint="True"
+        SystemDecorations="BorderOnly"
         >
      <Design.DataContext>
          <vm:ProjectDetailsViewModel/>
      </Design.DataContext>
    
    <StackPanel>
-    <!--Title Bar (Removed)-->
+    <!--Title Bar-->
+    <Panel Height="30" IsHitTestVisible="False">
+      <ContentControl Content="{Binding WindowTitle}"
+                      IsHitTestVisible="False"
+                      Opacity="0.8"
+                      HorizontalContentAlignment="Center"
+                      VerticalAlignment="Center"
+                      HorizontalAlignment="Center"/>
+    </Panel>
     <!--Main contents-->
     <StackPanel Margin="10" Spacing="5">
       <TextBox AcceptsReturn="False" AcceptsTab="False" Height="20" Text="{Binding Name}" Watermark="Name"/>
       <TextBox AcceptsReturn="False" AcceptsTab="False" Height="20" Text="{Binding Author}" Watermark="Author"/>
-      <TextBox AcceptsReturn="True" AcceptsTab="False" Height="400" Text="{Binding Description}" Watermark="Description"/>
+      <TextBox AcceptsReturn="True" AcceptsTab="False" Height="370" Text="{Binding Description}" Watermark="Description"/>
       <TextBox AcceptsReturn="False" AcceptsTab="False" Height="20" Text="{Binding Copyright}" Watermark="Copyright"/>
       <ContentControl Content="{Binding WorkTime}"/>
       <DockPanel>
