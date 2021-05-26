@@ -39,6 +39,7 @@ namespace IridiumEditor.ViewModels
                 var details = new ProjectDetailsViewModel(project);
 
                 await ShowDetails.Handle(details);
+                WindowTitle = GenWindowTitle();
             });
         }
 
