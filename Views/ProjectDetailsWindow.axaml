@@ -19,9 +19,9 @@
          <vm:ProjectDetailsViewModel/>
      </Design.DataContext>
    
-   <Panel>
+   <DockPanel>
     <!--Title Bar-->
-    <Panel Height="30" VerticalAlignment="Top">
+    <Panel DockPanel.Dock="Top" Height="30">
       <ContentControl Content="{Binding WindowTitle}"
                       IsHitTestVisible="False"
                       Opacity="0.8"
@@ -30,16 +30,20 @@
                       HorizontalAlignment="Center"/>
     </Panel>
     <!--Main contents-->
-    <StackPanel Margin="10" Spacing="5" VerticalAlignment="Bottom">
-      <TextBox AcceptsReturn="False" AcceptsTab="False" Height="20" Text="{Binding Name}" Watermark="Name"/>
-      <TextBox AcceptsReturn="False" AcceptsTab="False" Height="20" Text="{Binding Author}" Watermark="Author"/>
-      <TextBox AcceptsReturn="True" AcceptsTab="False" Height="370" Text="{Binding Description}" Watermark="Description"/>
-      <TextBox AcceptsReturn="False" AcceptsTab="False" Height="20" Text="{Binding Copyright}" Watermark="Copyright"/>
-      <ContentControl Content="{Binding WorkTime}"/>
-      <DockPanel>
-        <Button Command="{Binding CancelCommand}" HorizontalAlignment="Right">Cancel</Button>
-        <Button Command="{Binding OkCommand}" HorizontalAlignment="Right">Ok</Button>
-      </DockPanel>
-    </StackPanel>
-  </Panel>
+    <DockPanel Margin="10">
+      <StackPanel DockPanel.Dock="Top" Spacing="5" Margin="0, 5">
+        <TextBox AcceptsReturn="False" AcceptsTab="False" DockPanel.Dock="Top" Text="{Binding Name}" Watermark="Name"/>
+        <TextBox AcceptsReturn="False" AcceptsTab="False" DockPanel.Dock="Top" Text="{Binding Author}" Watermark="Author"/>
+      </StackPanel>
+      <StackPanel DockPanel.Dock="Bottom" Spacing="5" Margin="0, 5">
+        <TextBox AcceptsReturn="False" AcceptsTab="False" DockPanel.Dock="Bottom" Text="{Binding Copyright}" Watermark="Copyright"/>
+        <ContentControl DockPanel.Dock="Bottom" Content="{Binding WorkTime}"/>
+        <StackPanel DockPanel.Dock="Bottom" HorizontalAlignment="Right" Spacing="5" Orientation="Horizontal">
+          <Button Command="{Binding CancelCommand}">Cancel</Button>
+          <Button Command="{Binding OkCommand}">Ok</Button>
+        </StackPanel>
+      </StackPanel>
+      <TextBox AcceptsReturn="True" AcceptsTab="False" TextWrapping="Wrap" Text="{Binding Description}" Watermark="Description"/>
+    </DockPanel>
+  </DockPanel>
 </Window>
