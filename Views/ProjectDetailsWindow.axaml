@@ -6,21 +6,22 @@
         mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="600"
         x:Class="IridiumEditor.ProjectDetailsWindow"
         Title="{Binding WindowTitle}"
-        CanResize="False"
+        
         ShowInTaskbar="False"
         Icon="/Assets/Icon.png"
         Width="500"
         Height="600"
+        
         ExtendClientAreaToDecorationsHint="True"
-        SystemDecorations="BorderOnly"
+        ExtendClientAreaChromeHints="NoChrome"
         >
      <Design.DataContext>
          <vm:ProjectDetailsViewModel/>
      </Design.DataContext>
    
-   <StackPanel>
+   <Panel>
     <!--Title Bar-->
-    <Panel Height="30" IsHitTestVisible="False">
+    <Panel Height="30" VerticalAlignment="Top">
       <ContentControl Content="{Binding WindowTitle}"
                       IsHitTestVisible="False"
                       Opacity="0.8"
@@ -29,7 +30,7 @@
                       HorizontalAlignment="Center"/>
     </Panel>
     <!--Main contents-->
-    <StackPanel Margin="10" Spacing="5">
+    <StackPanel Margin="10" Spacing="5" VerticalAlignment="Bottom">
       <TextBox AcceptsReturn="False" AcceptsTab="False" Height="20" Text="{Binding Name}" Watermark="Name"/>
       <TextBox AcceptsReturn="False" AcceptsTab="False" Height="20" Text="{Binding Author}" Watermark="Author"/>
       <TextBox AcceptsReturn="True" AcceptsTab="False" Height="370" Text="{Binding Description}" Watermark="Description"/>
@@ -40,5 +41,5 @@
         <Button Command="{Binding OkCommand}" HorizontalAlignment="Right">Ok</Button>
       </DockPanel>
     </StackPanel>
-  </StackPanel>
+  </Panel>
 </Window>
