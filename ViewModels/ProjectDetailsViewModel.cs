@@ -20,6 +20,8 @@ namespace IridiumEditor.ViewModels
             get => name;
             set
             {
+                value = value.Trim();
+                if (value == "") value = "Untitled Project";
                 name = value;
                 WindowTitle = GenWindowTitle();
             }
