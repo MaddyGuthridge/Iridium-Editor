@@ -12,19 +12,31 @@ namespace IridiumEditor.ViewModels
     public class ProjectDetailsViewModel : ViewModelBase
     {
         private readonly int associatedProject;
-        public string Name { get; set; }
+
+        private string name;
+
+        public string Name
+        {
+            get => name;
+            set
+            {
+                name = value;
+                WindowTitle = GenWindowTitle();
+            }
+        }
+
         public string Description { get; set; }
         public string Author { get; set; }
         public string Copyright { get; set; }
 
         public string WorkTime { get; }
 
+        private string GenWindowTitle() => "Project Details - " + Name + " - Iridium";
+        private string windowTitle;
         public string WindowTitle
-        { 
-            get
-            {
-                return "Project Details - " + Name + " - Iridium";
-            }
+        {
+            get => windowTitle;
+            set => this.RaiseAndSetIfChanged(ref windowTitle, value);
         }
 
         public ProjectDetailsViewModel(int projId)
@@ -34,6 +46,7 @@ namespace IridiumEditor.ViewModels
             Models.ProjectDetails details = App.Projects.GetProject(projId).details;
 
             Name = details.Name;
+            WindowTitle = GenWindowTitle();
             Description = details.Description;
             Author = details.Author;
             Copyright = details.Copyright;
