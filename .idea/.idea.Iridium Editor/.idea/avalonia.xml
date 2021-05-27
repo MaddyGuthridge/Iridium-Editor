@@ -3,6 +3,7 @@
   <component name="AvaloniaProject">
     <option name="projectPerEditor">
       <map>
+        <entry key="Views/AboutWindow.axaml" value="IridiumEditor.csproj" />
         <entry key="Views/MainWindow.axaml" value="IridiumEditor.csproj" />
         <entry key="Views/ProjectDetails.axaml" value="IridiumEditor.csproj" />
         <entry key="Views/ProjectDetailsWindow.axaml" value="IridiumEditor.csproj" />

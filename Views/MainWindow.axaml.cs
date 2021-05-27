@@ -21,6 +21,7 @@ namespace IridiumEditor.Views
 #endif
             this.WhenActivated(d => d(ViewModel!.ShowDetails.RegisterHandler(DoShowDetailsWindow)));
             this.WhenActivated(d => d(ViewModel!.QuitProgram.RegisterHandler(DoQuitProgram)));
+            this.WhenActivated(d => d(ViewModel!.ShowAbout.RegisterHandler(DoShowAboutWindow)));
         }
         
         private async Task DoShowDetailsWindow(InteractionContext<ProjectDetailsViewModel, ProjectDetailsViewModel> interaction)
@@ -28,6 +29,13 @@ namespace IridiumEditor.Views
             var dialog = new ProjectDetailsWindow {DataContext = interaction.Input};
 
             interaction.SetOutput(await dialog.ShowDialog<ProjectDetailsViewModel>(this));
+        }
+        
+        private async Task DoShowAboutWindow(InteractionContext<AboutWindowViewModel, AboutWindowViewModel> interaction)
+        {
+            var dialog = new AboutWindow() {DataContext = interaction.Input};
+
+            interaction.SetOutput(await dialog.ShowDialog<AboutWindowViewModel>(this));
         }
 
         private Task DoQuitProgram(InteractionContext<Unit, Unit> interaction)

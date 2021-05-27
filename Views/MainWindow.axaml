@@ -30,7 +30,7 @@
             <MenuItem Header="Save"></MenuItem>
             <MenuItem Header="Project Details" Command="{Binding ProjectDetailsCommand}"></MenuItem>
             <Separator></Separator>
-            <MenuItem Header="About Iridium"></MenuItem>
+            <MenuItem Header="About Iridium" Command="{Binding AboutIridiumCommand}"></MenuItem>
             <MenuItem Header="Quit" Command="{Binding QuitProgramCommand}"></MenuItem>
           </ContextMenu>
         </Button.ContextMenu>

@@ -32,6 +32,14 @@ namespace IridiumEditor.ViewModels
                 await ShowDetails.Handle(details);
                 WindowTitle = GenWindowTitle();
             });
+            
+            ShowAbout = new Interaction<AboutWindowViewModel, AboutWindowViewModel>();
+            AboutIridiumCommand = ReactiveCommand.CreateFromTask(async () =>
+            {
+                var about = new AboutWindowViewModel();
+
+                await ShowAbout.Handle(about);
+            });
 
             QuitProgram = new Interaction<Unit, Unit>();
             QuitProgramCommand = ReactiveCommand.Create(() =>
@@ -44,6 +52,9 @@ namespace IridiumEditor.ViewModels
 
         public Interaction<ProjectDetailsViewModel, ProjectDetailsViewModel> ShowDetails { get; }
         public ICommand ProjectDetailsCommand { get; }
+        
+        public Interaction<AboutWindowViewModel, AboutWindowViewModel> ShowAbout { get; }
+        public ICommand AboutIridiumCommand { get; }
         
         public Interaction<Unit, Unit> QuitProgram { get; }
         public ICommand QuitProgramCommand { get; }
