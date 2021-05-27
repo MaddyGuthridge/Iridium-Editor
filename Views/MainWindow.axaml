@@ -9,7 +9,9 @@
         Icon="/Assets/Icon.png"
         Title="{Binding WindowTitle}"
         MinWidth="480"
-        MinHeight="270">
+        MinHeight="270"
+        TransparencyLevelHint="AcrylicBlur"
+        Background="Transparent">
   <Window.Styles>
     <Style Selector="Window[WindowState=Maximized]">
       <Setter Property="Padding" Value="8" />
@@ -22,6 +24,15 @@
 
   <!--Title Bar-->
   <Panel>
+    <ExperimentalAcrylicBorder IsHitTestVisible="False">
+      <ExperimentalAcrylicBorder.Material>
+        <ExperimentalAcrylicMaterial
+          BackgroundSource="Digger"
+          TintColor="Black"
+          TintOpacity="1"
+          MaterialOpacity="0.65" />
+      </ExperimentalAcrylicBorder.Material>
+    </ExperimentalAcrylicBorder>  
     <Panel Height="30" VerticalAlignment="Top">
       <Button Width="30" Height="30" Command="{Binding ProjectDetailsCommand}">
         <Image Source="/Assets/Icon.png" Width="30" Height="30"/>

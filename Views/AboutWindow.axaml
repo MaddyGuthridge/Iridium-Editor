@@ -11,31 +11,45 @@
         Icon="/Assets/Icon.png"
         Title="About Iridium"
         Width="500"
-        Height="600">
+        Height="600"
+        TransparencyLevelHint="AcrylicBlur"
+        Background="Transparent">
     
     <Design.DataContext>
         <vm:AboutWindowViewModel/>
     </Design.DataContext>
-    <DockPanel Margin="10">
-        <StackPanel DockPanel.Dock="Bottom" HorizontalAlignment="Stretch">
-            <Button HorizontalAlignment="Right" Command="{Binding CloseCommand}">Close</Button>
-        </StackPanel>
+    <Panel>
+        <ExperimentalAcrylicBorder IsHitTestVisible="False">
+            <ExperimentalAcrylicBorder.Material>
+                <ExperimentalAcrylicMaterial
+                    BackgroundSource="Digger"
+                    TintColor="Black"
+                    TintOpacity="1"
+                    MaterialOpacity="0.65" />
+            </ExperimentalAcrylicBorder.Material>
+        </ExperimentalAcrylicBorder>
         
-        <StackPanel>
-            <StackPanel Spacing="10" Orientation="Horizontal">
-                <Image Source="/Assets/Icon.png" Height="200"></Image>
-                <StackPanel>
-                    <ContentControl FontSize="80">Iridium</ContentControl>
-                    <StackPanel Orientation="Horizontal" Spacing="40">
-                        <ContentControl FontSize="70">Editor</ContentControl>
-                        <ContentControl  VerticalAlignment="Bottom">v0.0.1</ContentControl>
-                    </StackPanel>
-                    <ContentControl Content="{Binding ProgAuthor}"></ContentControl>
-                </StackPanel>
-                
+        <DockPanel Margin="10">
+            <StackPanel DockPanel.Dock="Bottom" HorizontalAlignment="Stretch">
+                <Button HorizontalAlignment="Right" Command="{Binding CloseCommand}">Close</Button>
             </StackPanel>
-            <ContentControl Content="{Binding ProgGit}"></ContentControl>
-        </StackPanel>
-        
-    </DockPanel>
+            
+            <StackPanel>
+                <StackPanel Spacing="10" Orientation="Horizontal">
+                    <Image Source="/Assets/Icon.png" Height="200"></Image>
+                    <StackPanel>
+                        <ContentControl FontSize="80">Iridium</ContentControl>
+                        <StackPanel Orientation="Horizontal" Spacing="40">
+                            <ContentControl FontSize="70">Editor</ContentControl>
+                            <ContentControl  VerticalAlignment="Bottom">v0.0.1</ContentControl>
+                        </StackPanel>
+                        <ContentControl Content="{Binding ProgAuthor}"></ContentControl>
+                    </StackPanel>
+                    
+                </StackPanel>
+                <ContentControl Content="{Binding ProgGit}"></ContentControl>
+            </StackPanel>
+            
+        </DockPanel>
+    </Panel>
 </Window>

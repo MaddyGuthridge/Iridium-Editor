@@ -14,13 +14,27 @@
         
         ExtendClientAreaToDecorationsHint="True"
         ExtendClientAreaChromeHints="NoChrome"
+        
+        TransparencyLevelHint="AcrylicBlur"
+        Background="Transparent"
         >
      <Design.DataContext>
          <vm:ProjectDetailsViewModel/>
      </Design.DataContext>
    
-   <DockPanel>
-    <!--Title Bar-->
+   <Panel>
+     <ExperimentalAcrylicBorder IsHitTestVisible="False">
+       <ExperimentalAcrylicBorder.Material>
+         <ExperimentalAcrylicMaterial
+           BackgroundSource="Digger"
+           TintColor="Black"
+           TintOpacity="1"
+           MaterialOpacity="0.65" />
+       </ExperimentalAcrylicBorder.Material>
+     </ExperimentalAcrylicBorder>
+     
+     <DockPanel>
+       <!--Title Bar-->
     <Panel DockPanel.Dock="Top" Height="30">
       <ContentControl Content="{Binding WindowTitle}"
                       IsHitTestVisible="False"
@@ -46,4 +60,5 @@
       <TextBox AcceptsReturn="True" AcceptsTab="False" TextWrapping="Wrap" Text="{Binding Description}" Watermark="Description"/>
     </DockPanel>
   </DockPanel>
+   </Panel>
 </Window>
