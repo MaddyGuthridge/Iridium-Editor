@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reactive;
 using System.Text;
 using System.Threading.Tasks;
+using Avalonia.Threading;
 using IridiumEditor;
 using ReactiveUI;
 
@@ -31,7 +32,21 @@ namespace IridiumEditor.ViewModels
         public string Author { get; set; }
         public string Copyright { get; set; }
 
-        public string WorkTime { get; }
+        private string workTime;
+        private TimeSpan workTimeSpan;
+        private DispatcherTimer workTimer;
+
+        private void WorkTimeTick(object sender, EventArgs e)
+        {
+            workTimeSpan += TimeSpan.FromSeconds(1);
+            WorkTime = GenWorkTimeStr();
+        }
+        private string GenWorkTimeStr() => "Working time: " + workTimeSpan.ToString(@"d\:hh\:mm\:ss");
+        public string WorkTime
+        {
+            get => workTime;
+            private set => this.RaiseAndSetIfChanged(ref workTime, value);
+        }
 
         private string GenWindowTitle() => "Project Details - " + Name + " - Iridium";
         private string windowTitle;
@@ -52,14 +67,18 @@ namespace IridiumEditor.ViewModels
             Description = details.Description;
             Author = details.Author;
             Copyright = details.Copyright;
-            WorkTime = "Working time: " + details.GetWorkingTime().ToString(@"d\:hh\:mm\:ss");
+            
+            workTimeSpan = details.GetWorkingTime();
+            WorkTime = GenWorkTimeStr();
+            workTimer = new DispatcherTimer {Interval = TimeSpan.FromSeconds(1)};
+            workTimer.Tick += WorkTimeTick;
+            workTimer.Start();
             
             OkCommand = ReactiveCommand.Create(() =>
             {
                 SaveDetails();
                 return this;
             });
-
             CancelCommand = ReactiveCommand.Create(() => this);
         }
 
