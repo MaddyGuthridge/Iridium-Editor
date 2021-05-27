@@ -4,7 +4,7 @@
         xmlns:vm="using:IridiumEditor.ViewModels"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="600"
-        x:Class="IridiumEditor.ProjectDetailsWindow"
+        x:Class="IridiumEditor.Views.ProjectDetailsWindow"
         Title="{Binding WindowTitle}"
         
         ShowInTaskbar="False"
