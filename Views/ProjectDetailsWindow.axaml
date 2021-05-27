@@ -11,6 +11,8 @@
         Icon="/Assets/Icon.png"
         Width="500"
         Height="600"
+        MinWidth="400"
+        MinHeight="300"
         
         ExtendClientAreaToDecorationsHint="True"
         ExtendClientAreaChromeHints="NoChrome"
