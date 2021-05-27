@@ -7,7 +7,7 @@ using Avalonia.ReactiveUI;
 using IridiumEditor.ViewModels;
 using ReactiveUI;
 
-namespace IridiumEditor
+namespace IridiumEditor.Views
 {
     public class ProjectDetailsWindow : ReactiveWindow<ProjectDetailsViewModel>
     {
