@@ -34,16 +34,13 @@
                 <Button HorizontalAlignment="Right" Command="{Binding CloseCommand}">Close</Button>
             </StackPanel>
             
-            <StackPanel>
+            <StackPanel Spacing="10">
                 <StackPanel Spacing="10" Orientation="Horizontal">
                     <Image Source="/Assets/Icon.png" Height="200"></Image>
-                    <StackPanel>
-                        <ContentControl FontSize="80">Iridium</ContentControl>
-                        <StackPanel Orientation="Horizontal" Spacing="40">
-                            <ContentControl FontSize="70">Editor</ContentControl>
-                            <ContentControl  VerticalAlignment="Bottom">v0.0.1</ContentControl>
-                        </StackPanel>
+                    <StackPanel Spacing="5">
+                        <ContentControl FontSize="80" Content="{Binding ProgName}"></ContentControl>
                         <ContentControl Content="{Binding ProgAuthor}"></ContentControl>
+                        <ContentControl  VerticalAlignment="Bottom" Content="{Binding ProgVersion}"></ContentControl>
                     </StackPanel>
                     
                 </StackPanel>

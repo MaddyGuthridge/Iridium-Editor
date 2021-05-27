@@ -61,7 +61,7 @@ namespace IridiumEditor.ViewModels
         
         private string GenWindowTitle()
         {
-            return App.Projects.GetProject(_project).details.Name + " - Iridium";
+            return App.Projects.GetProject(_project).details.Name + $" - {Constants.Name}";
         }
     }
 }

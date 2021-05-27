@@ -42,7 +42,7 @@ namespace IridiumEditor.ViewModels
             private set => this.RaiseAndSetIfChanged(ref _workTime, value);
         }
 
-        private string GenWindowTitle() => "Project Details - " + Name + " - Iridium";
+        private string GenWindowTitle() => "Project Details - " + Name + $" - {Constants.Name}";
         private string _windowTitle;
         public string WindowTitle
         {
