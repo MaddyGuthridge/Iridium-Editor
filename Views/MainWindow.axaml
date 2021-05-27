@@ -24,8 +24,16 @@
   <Panel>
     <Panel Height="30" VerticalAlignment="Top">
       <Button Width="30" Height="30" Command="{Binding ProjectDetailsCommand}">
-        
         <Image Source="/Assets/Icon.png" Width="30" Height="30"/>
+        <Button.ContextMenu>
+          <ContextMenu>
+            <MenuItem Header="Save"></MenuItem>
+            <MenuItem Header="Project Details" Command="{Binding ProjectDetailsCommand}"></MenuItem>
+            <Separator></Separator>
+            <MenuItem Header="About Iridium"></MenuItem>
+            <MenuItem Header="Quit" Command="{Binding QuitProgramCommand}"></MenuItem>
+          </ContextMenu>
+        </Button.ContextMenu>
       </Button>
       <ContentControl Content="{Binding WindowTitle}"
                       IsHitTestVisible="False"

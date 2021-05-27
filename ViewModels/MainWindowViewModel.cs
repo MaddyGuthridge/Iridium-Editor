@@ -1,3 +1,4 @@
+using System.Reactive;
 using System.Reactive.Linq;
 using System.Windows.Input;
 using ReactiveUI;
@@ -24,7 +25,6 @@ namespace IridiumEditor.ViewModels
             WindowTitle = GenWindowTitle();
             
             ShowDetails = new Interaction<ProjectDetailsViewModel, ProjectDetailsViewModel>();
-            
             ProjectDetailsCommand = ReactiveCommand.CreateFromTask(async () =>
             {
                 var details = new ProjectDetailsViewModel(_project);
@@ -32,11 +32,21 @@ namespace IridiumEditor.ViewModels
                 await ShowDetails.Handle(details);
                 WindowTitle = GenWindowTitle();
             });
+
+            QuitProgram = new Interaction<Unit, Unit>();
+            QuitProgramCommand = ReactiveCommand.Create(() =>
+            {
+                QuitProgram.Handle(Unit.Default);
+            });
+            
+            
         }
 
         public Interaction<ProjectDetailsViewModel, ProjectDetailsViewModel> ShowDetails { get; }
-
         public ICommand ProjectDetailsCommand { get; }
+        
+        public Interaction<Unit, Unit> QuitProgram { get; }
+        public ICommand QuitProgramCommand { get; }
         
         private string GenWindowTitle()
         {
