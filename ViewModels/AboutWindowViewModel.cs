@@ -13,6 +13,11 @@ namespace IridiumEditor.ViewModels
         
         public ReactiveCommand<Unit, AboutWindowViewModel> CloseCommand { get; }
 
+        public void OpenProjectGithub()
+        {
+            Helpers.LaunchBrowser(ProgGit);
+        }
+        
         public AboutWindowViewModel()
         {
             CloseCommand = ReactiveCommand.Create(() => this);

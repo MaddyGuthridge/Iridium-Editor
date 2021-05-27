@@ -30,7 +30,8 @@
         </ExperimentalAcrylicBorder>
         
         <DockPanel Margin="10">
-            <StackPanel DockPanel.Dock="Bottom" HorizontalAlignment="Stretch">
+            <StackPanel DockPanel.Dock="Bottom" HorizontalAlignment="Right" Orientation="Horizontal" Spacing="5">
+                <Button HorizontalAlignment="Right" Command="{Binding OpenProjectGithub}">View on GitHub</Button>
                 <Button HorizontalAlignment="Right" Command="{Binding CloseCommand}">Close</Button>
             </StackPanel>
             
