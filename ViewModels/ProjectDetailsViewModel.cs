@@ -1,29 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reactive;
-using System.Text;
-using System.Threading.Tasks;
 using Avalonia.Threading;
-using IridiumEditor;
 using ReactiveUI;
 
 namespace IridiumEditor.ViewModels
 {
     public class ProjectDetailsViewModel : ViewModelBase
     {
-        private readonly int associatedProject;
+        private readonly int _associatedProject;
 
-        private string name;
+        private string _name;
 
         public string Name
         {
-            get => name;
+            get => _name;
             set
             {
                 value = value.Trim();
                 if (value == "") value = "Untitled Project";
-                name = value;
+                _name = value;
                 WindowTitle = GenWindowTitle();
             }
         }
@@ -32,45 +27,45 @@ namespace IridiumEditor.ViewModels
         public string Author { get; set; }
         public string Copyright { get; set; }
 
-        private string workTime;
-        private TimeSpan workTimeSpan;
-        private DispatcherTimer workTimer;
+        private string _workTime;
+        private TimeSpan _workTimeSpan;
 
-        private void WorkTimeTick(object sender, EventArgs e)
+        private void WorkTimeTick(object? sender, EventArgs e)
         {
-            workTimeSpan += TimeSpan.FromSeconds(1);
+            _workTimeSpan += TimeSpan.FromSeconds(1);
             WorkTime = GenWorkTimeStr();
         }
-        private string GenWorkTimeStr() => "Working time: " + workTimeSpan.ToString(@"d\:hh\:mm\:ss");
+        private string GenWorkTimeStr() => "Working time: " + _workTimeSpan.ToString(@"d\:hh\:mm\:ss");
         public string WorkTime
         {
-            get => workTime;
-            private set => this.RaiseAndSetIfChanged(ref workTime, value);
+            get => _workTime;
+            private set => this.RaiseAndSetIfChanged(ref _workTime, value);
         }
 
         private string GenWindowTitle() => "Project Details - " + Name + " - Iridium";
-        private string windowTitle;
+        private string _windowTitle;
         public string WindowTitle
         {
-            get => windowTitle;
-            set => this.RaiseAndSetIfChanged(ref windowTitle, value);
+            get => _windowTitle;
+            set => this.RaiseAndSetIfChanged(ref _windowTitle, value);
         }
 
         public ProjectDetailsViewModel(int projId)
         {
-            associatedProject = projId;
+            _associatedProject = projId;
 
             Models.ProjectDetails details = App.Projects.GetProject(projId).details;
 
-            Name = details.Name;
-            WindowTitle = GenWindowTitle();
+            _name = details.Name;
+            _windowTitle = GenWindowTitle();
             Description = details.Description;
             Author = details.Author;
             Copyright = details.Copyright;
             
-            workTimeSpan = details.GetWorkingTime();
-            WorkTime = GenWorkTimeStr();
-            workTimer = new DispatcherTimer {Interval = TimeSpan.FromSeconds(1)};
+            _workTimeSpan = details.GetWorkingTime();
+            _workTime = GenWorkTimeStr();
+            // Why does this continue to work when we leave the scope of the constructor?
+            DispatcherTimer workTimer = new DispatcherTimer {Interval = TimeSpan.FromSeconds(1)};
             workTimer.Tick += WorkTimeTick;
             workTimer.Start();
             
@@ -87,7 +82,7 @@ namespace IridiumEditor.ViewModels
         
         private void SaveDetails()
         {
-            Models.ProjectDetails details = App.Projects.GetProject(associatedProject).details;
+            Models.ProjectDetails details = App.Projects.GetProject(_associatedProject).details;
 
             details.Name = Name;
             details.Description = Description;
