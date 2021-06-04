@@ -19,11 +19,16 @@
                 
         TransparencyLevelHint="AcrylicBlur"
         Background="Transparent"
->
+  >
   <Design.DataContext>
     <vm:ProjectDetailsViewModel/>
   </Design.DataContext>
-     
+  
+  <Window.KeyBindings>
+    <KeyBinding Gesture="Escape" Command="{Binding CancelCommand}"></KeyBinding>
+    <KeyBinding Gesture="Enter" Command="{Binding OkCommand}"></KeyBinding>
+  </Window.KeyBindings>
+  
   <Panel>
     <ExperimentalAcrylicBorder IsHitTestVisible="False">
       <ExperimentalAcrylicBorder.Material>

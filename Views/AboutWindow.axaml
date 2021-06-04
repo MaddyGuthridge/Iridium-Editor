@@ -18,6 +18,11 @@
     <Design.DataContext>
         <vm:AboutWindowViewModel/>
     </Design.DataContext>
+    
+    <Window.KeyBindings>
+        <KeyBinding Gesture="Escape" Command="{Binding CloseCommand}"></KeyBinding>
+    </Window.KeyBindings>
+    
     <Panel>
         <ExperimentalAcrylicBorder IsHitTestVisible="False">
             <ExperimentalAcrylicBorder.Material>
