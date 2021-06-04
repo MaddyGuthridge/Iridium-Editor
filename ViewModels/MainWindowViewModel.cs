@@ -1,6 +1,7 @@
 using System.Reactive;
 using System.Reactive.Linq;
 using System.Windows.Input;
+using IridiumEditor.Models;
 using ReactiveUI;
 
 namespace IridiumEditor.ViewModels
@@ -17,17 +18,17 @@ namespace IridiumEditor.ViewModels
         public string NoteCount => "Note Count: 17048";
         public string CursorPosition => "13.3.120 : 12";
 
-        private readonly int _project;
+        private readonly Project _project;
 
         public MainWindowViewModel()
         {
-            _project = App.Projects.CreateProject();
+            _project = new Project();
             WindowTitle = GenWindowTitle();
             
             ShowDetails = new Interaction<ProjectDetailsViewModel, ProjectDetailsViewModel>();
             ProjectDetailsCommand = ReactiveCommand.CreateFromTask(async () =>
             {
-                var details = new ProjectDetailsViewModel(_project);
+                var details = new ProjectDetailsViewModel(_project.details);
 
                 await ShowDetails.Handle(details);
                 WindowTitle = GenWindowTitle();
@@ -46,8 +47,6 @@ namespace IridiumEditor.ViewModels
             {
                 QuitProgram.Handle(Unit.Default);
             });
-            
-            
         }
 
         public Interaction<ProjectDetailsViewModel, ProjectDetailsViewModel> ShowDetails { get; }
@@ -61,7 +60,7 @@ namespace IridiumEditor.ViewModels
         
         private string GenWindowTitle()
         {
-            return App.Projects.GetProject(_project).details.Name + $" - {Constants.Name}";
+            return _project.details.Name + $" - {Constants.Name}";
         }
     }
 }

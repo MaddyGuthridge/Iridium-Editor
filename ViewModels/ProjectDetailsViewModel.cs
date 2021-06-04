@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Reactive;
 using Avalonia.Threading;
+using IridiumEditor.Models;
 using ReactiveUI;
 
 namespace IridiumEditor.ViewModels
 {
     public class ProjectDetailsViewModel : ViewModelBase
     {
-        private readonly int _associatedProject;
+        public readonly ProjectDetails details;
 
         private string _name;
 
@@ -50,12 +51,9 @@ namespace IridiumEditor.ViewModels
             set => this.RaiseAndSetIfChanged(ref _windowTitle, value);
         }
 
-        public ProjectDetailsViewModel(int projId)
+        public ProjectDetailsViewModel(ProjectDetails d)
         {
-            _associatedProject = projId;
-
-            Models.ProjectDetails details = App.Projects.GetProject(projId).details;
-
+            details = d;
             _name = details.Name;
             _windowTitle = GenWindowTitle();
             Description = details.Description;
@@ -82,8 +80,6 @@ namespace IridiumEditor.ViewModels
         
         private void SaveDetails()
         {
-            Models.ProjectDetails details = App.Projects.GetProject(_associatedProject).details;
-
             details.Name = Name;
             details.Description = Description;
             details.Author = Author;
