@@ -1,4 +1,4 @@
- <Window xmlns="https://github.com/avaloniaui"
+<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:vm="using:IridiumEditor.ViewModels"
@@ -6,61 +6,61 @@
         mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="600"
         x:Class="IridiumEditor.Views.ProjectDetailsWindow"
         Title="{Binding WindowTitle}"
-        
+                
         ShowInTaskbar="False"
         Icon="/Assets/Icon.png"
         Width="500"
         Height="600"
         MinWidth="400"
         MinHeight="300"
-        
+                
         ExtendClientAreaToDecorationsHint="True"
         ExtendClientAreaChromeHints="NoChrome"
-        
+                
         TransparencyLevelHint="AcrylicBlur"
         Background="Transparent"
-        >
-     <Design.DataContext>
-         <vm:ProjectDetailsViewModel/>
-     </Design.DataContext>
-   
-   <Panel>
-     <ExperimentalAcrylicBorder IsHitTestVisible="False">
-       <ExperimentalAcrylicBorder.Material>
-         <ExperimentalAcrylicMaterial
-           BackgroundSource="Digger"
-           TintColor="Black"
-           TintOpacity="1"
-           MaterialOpacity="0.65" />
-       </ExperimentalAcrylicBorder.Material>
-     </ExperimentalAcrylicBorder>
+>
+  <Design.DataContext>
+    <vm:ProjectDetailsViewModel/>
+  </Design.DataContext>
      
-     <DockPanel>
-       <!--Title Bar-->
-    <Panel DockPanel.Dock="Top" Height="30">
-      <ContentControl Content="{Binding WindowTitle}"
-                      IsHitTestVisible="False"
-                      Opacity="0.8"
-                      HorizontalContentAlignment="Center"
-                      VerticalAlignment="Center"
-                      HorizontalAlignment="Center"/>
-    </Panel>
-    <!--Main contents-->
-    <DockPanel Margin="10">
-      <StackPanel DockPanel.Dock="Top" Spacing="5" Margin="0, 5">
-        <TextBox AcceptsReturn="False" AcceptsTab="False" DockPanel.Dock="Top" Text="{Binding Name}" Watermark="Name"/>
-        <TextBox AcceptsReturn="False" AcceptsTab="False" DockPanel.Dock="Top" Text="{Binding Author}" Watermark="Author"/>
-      </StackPanel>
-      <StackPanel DockPanel.Dock="Bottom" Spacing="5" Margin="0, 5">
-        <TextBox AcceptsReturn="False" AcceptsTab="False" DockPanel.Dock="Bottom" Text="{Binding Copyright}" Watermark="Copyright"/>
-        <ContentControl DockPanel.Dock="Bottom" Content="{Binding WorkTime}"/>
-        <StackPanel DockPanel.Dock="Bottom" HorizontalAlignment="Right" Spacing="5" Orientation="Horizontal">
-          <Button Command="{Binding CancelCommand}">Cancel</Button>
-          <Button Command="{Binding OkCommand}">Ok</Button>
+  <Panel>
+    <ExperimentalAcrylicBorder IsHitTestVisible="False">
+      <ExperimentalAcrylicBorder.Material>
+        <ExperimentalAcrylicMaterial
+          BackgroundSource="Digger"
+          TintColor="Black"
+          TintOpacity="1"
+          MaterialOpacity="0.65" />
+      </ExperimentalAcrylicBorder.Material>
+    </ExperimentalAcrylicBorder>
+         
+    <DockPanel>
+      <!--Title Bar-->
+      <Panel DockPanel.Dock="Top" Height="30">
+        <ContentControl Content="{Binding WindowTitle}"
+                        IsHitTestVisible="False"
+                        Opacity="0.8"
+                        HorizontalContentAlignment="Center"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"/>
+      </Panel>
+      <!--Main contents-->
+      <DockPanel Margin="10">
+        <StackPanel DockPanel.Dock="Top" Spacing="5" Margin="0, 5">
+          <TextBox AcceptsReturn="False" AcceptsTab="False" DockPanel.Dock="Top" Text="{Binding Name}" Watermark="Name"/>
+          <TextBox AcceptsReturn="False" AcceptsTab="False" DockPanel.Dock="Top" Text="{Binding Author}" Watermark="Author"/>
         </StackPanel>
-      </StackPanel>
-      <TextBox AcceptsReturn="True" AcceptsTab="False" TextWrapping="Wrap" Text="{Binding Description}" Watermark="Description"/>
+        <StackPanel DockPanel.Dock="Bottom" Spacing="5" Margin="0, 5">
+          <TextBox AcceptsReturn="False" AcceptsTab="False" DockPanel.Dock="Bottom" Text="{Binding Copyright}" Watermark="Copyright"/>
+          <ContentControl DockPanel.Dock="Bottom" Content="{Binding WorkTime}"/>
+          <StackPanel DockPanel.Dock="Bottom" HorizontalAlignment="Right" Spacing="5" Orientation="Horizontal">
+            <Button Command="{Binding CancelCommand}">Cancel</Button>
+            <Button Command="{Binding OkCommand}">Ok</Button>
+          </StackPanel>
+        </StackPanel>
+        <TextBox AcceptsReturn="True" AcceptsTab="False" TextWrapping="Wrap" Text="{Binding Description}" Watermark="Description"/>
+      </DockPanel>
     </DockPanel>
-  </DockPanel>
-   </Panel>
+  </Panel>
 </Window>
