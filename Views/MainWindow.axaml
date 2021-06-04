@@ -37,26 +37,29 @@
     <!-- Window Contents-->
     <DockPanel>
       <!--Title Bar-->
-      <Panel Height="30" DockPanel.Dock="Top">
-        <Button Width="30" Height="30" Command="{Binding ProjectDetailsCommand}">
-          <Image Source="/Assets/Icon.png" Width="30" Height="30"/>
-          <Button.ContextMenu>
-            <ContextMenu>
-              <MenuItem Header="Save"></MenuItem>
-              <MenuItem Header="Project Details" Command="{Binding ProjectDetailsCommand}"></MenuItem>
-              <Separator></Separator>
-              <MenuItem Header="About Iridium" Command="{Binding AboutIridiumCommand}"></MenuItem>
-              <MenuItem Header="Quit" Command="{Binding QuitProgramCommand}"></MenuItem>
-            </ContextMenu>
-          </Button.ContextMenu>
-        </Button>
+      <DockPanel Height="30" DockPanel.Dock="Top">
+        <Image Source="/Assets/Icon.png" DockPanel.Dock="Left"/>
         <ContentControl Content="{Binding WindowTitle}"
                         IsHitTestVisible="False"
                         Opacity="0.8"
                         HorizontalContentAlignment="Center"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Center"/>
-      </Panel>
+      </DockPanel>
+      <!--Menu Items-->
+      <Menu DockPanel.Dock="Top">
+        <MenuItem Header="_File">
+          <MenuItem Header="_Save"/>
+          <MenuItem Header="_Compile"/>
+          <MenuItem Header="Project _Details" Command="{Binding ProjectDetailsCommand}"/>
+          <Separator/>
+          <MenuItem Header="_About Iridium" Command="{Binding AboutIridiumCommand}"/>
+          <MenuItem Header="_Quit" Command="{Binding QuitProgramCommand}"/>
+        </MenuItem>
+        <MenuItem Header="_Edit">
+          <MenuItem Header="_Preferences"/>
+        </MenuItem>
+      </Menu>
       
       <!--Status Bar-->
       <Panel Height="20" DockPanel.Dock="Bottom" Background="Gray">
