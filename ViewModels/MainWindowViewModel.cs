@@ -1,3 +1,4 @@
+using System;
 using System.Reactive;
 using System.Reactive.Linq;
 using System.Windows.Input;
@@ -41,8 +42,6 @@ namespace IridiumEditor.ViewModels
 
                 await ShowAbout.Handle(about);
             });
-
-            QuitProgramCommand = ReactiveCommand.Create(() => this);
         }
 
         public Interaction<ProjectDetailsViewModel, ProjectDetailsViewModel> ShowDetails { get; }
@@ -50,8 +49,11 @@ namespace IridiumEditor.ViewModels
         
         public Interaction<AboutWindowViewModel, AboutWindowViewModel> ShowAbout { get; }
         public ICommand AboutIridiumCommand { get; }
-        
-        public ReactiveCommand<Unit, MainWindowViewModel> QuitProgramCommand { get; }
+
+        public void QuitProgramCommand()
+        {
+            Environment.Exit(0);
+        }
 
         private string GenWindowTitle()
         {

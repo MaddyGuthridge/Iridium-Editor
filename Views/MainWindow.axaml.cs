@@ -20,7 +20,6 @@ namespace IridiumEditor.Views
 #endif
             this.WhenActivated(d => d(ViewModel!.ShowDetails.RegisterHandler(DoShowDetailsWindow)));
             this.WhenActivated(d => d(ViewModel!.ShowAbout.RegisterHandler(DoShowAboutWindow)));
-            this.WhenActivated(d => d(ViewModel!.QuitProgramCommand.Subscribe(Close)));
         }
         
         private async Task DoShowDetailsWindow(InteractionContext<ProjectDetailsViewModel, ProjectDetailsViewModel> interaction)

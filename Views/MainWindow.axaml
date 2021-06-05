@@ -54,7 +54,7 @@
           <MenuItem Header="Project _Details" Command="{Binding ProjectDetailsCommand}"/>
           <Separator/>
           <MenuItem Header="_About Iridium" HotKey="F1" Command="{Binding AboutIridiumCommand}"/>
-          <MenuItem Header="_Quit" Command="{Binding QuitProgramCommand}"/>
+          <MenuItem Header="_Quit" HotKey="Ctrl+Q" Command="{Binding QuitProgramCommand}"/>
         </MenuItem>
         <MenuItem Header="_Edit">
           <MenuItem Header="_Preferences"/>
