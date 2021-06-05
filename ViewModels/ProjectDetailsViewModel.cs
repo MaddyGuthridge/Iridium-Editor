@@ -10,7 +10,7 @@ namespace IridiumEditor.ViewModels
     {
         public readonly ProjectDetails details;
 
-        private string _name;
+        private string _name = null!;
 
         public string Name
         {
@@ -24,11 +24,11 @@ namespace IridiumEditor.ViewModels
             }
         }
 
-        public string Description { get; set; }
-        public string Author { get; set; }
-        public string Copyright { get; set; }
+        public string Description { get; set; } = null!;
+        public string Author { get; set; } = null!;
+        public string Copyright { get; set; } = null!;
 
-        private string _workTime;
+        private string _workTime = null!;
         private TimeSpan _workTimeSpan;
 
         private void WorkTimeTick(object? sender, EventArgs e)
@@ -44,7 +44,7 @@ namespace IridiumEditor.ViewModels
         }
 
         private string GenWindowTitle() => "Project Details - " + Name + $" - {Constants.Name}";
-        private string _windowTitle;
+        private string _windowTitle = null!;
         public string WindowTitle
         {
             get => _windowTitle;
@@ -54,6 +54,24 @@ namespace IridiumEditor.ViewModels
         public ProjectDetailsViewModel(ProjectDetails d)
         {
             details = d;
+            InitData();
+            
+            OkCommand = ReactiveCommand.Create(() =>
+            {
+                SaveDetails();
+                return this;
+            });
+            CancelCommand = ReactiveCommand.Create(() => this);
+        }
+
+        public ProjectDetailsViewModel()
+        {
+            details = new ProjectDetails();
+            InitData();
+        }
+
+        private void InitData()
+        {
             _name = details.Name;
             _windowTitle = GenWindowTitle();
             Description = details.Description;
@@ -66,18 +84,11 @@ namespace IridiumEditor.ViewModels
             DispatcherTimer workTimer = new DispatcherTimer {Interval = TimeSpan.FromSeconds(1)};
             workTimer.Tick += WorkTimeTick;
             workTimer.Start();
-            
-            OkCommand = ReactiveCommand.Create(() =>
-            {
-                SaveDetails();
-                return this;
-            });
-            CancelCommand = ReactiveCommand.Create(() => this);
         }
-
-        public ReactiveCommand<Unit, ProjectDetailsViewModel> OkCommand { get; }
-        public ReactiveCommand<Unit, ProjectDetailsViewModel> CancelCommand { get; }
         
+        public ReactiveCommand<Unit, ProjectDetailsViewModel> OkCommand { get; } = null!;
+        public ReactiveCommand<Unit, ProjectDetailsViewModel> CancelCommand { get; } = null!;
+
         private void SaveDetails()
         {
             details.Name = Name;
