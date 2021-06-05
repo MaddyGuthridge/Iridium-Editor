@@ -1,7 +1,6 @@
 using System.Reactive;
 using System.Threading.Tasks;
 using Avalonia;
-using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using Avalonia.ReactiveUI;
 using IridiumEditor.ViewModels;
@@ -9,7 +8,7 @@ using ReactiveUI;
 
 namespace IridiumEditor.Views
 {
-    public class MainWindow : ReactiveWindow<ViewModels.MainWindowViewModel>
+    public class MainWindow : ReactiveWindow<MainWindowViewModel>
     {
         public MainWindow()
         {
@@ -20,8 +19,8 @@ namespace IridiumEditor.Views
             this.AttachDevTools();
 #endif
             this.WhenActivated(d => d(ViewModel!.ShowDetails.RegisterHandler(DoShowDetailsWindow)));
-            this.WhenActivated(d => d(ViewModel!.QuitProgram.RegisterHandler(DoQuitProgram)));
             this.WhenActivated(d => d(ViewModel!.ShowAbout.RegisterHandler(DoShowAboutWindow)));
+            this.WhenActivated(d => d(ViewModel!.QuitProgramCommand.Subscribe(Close)));
         }
         
         private async Task DoShowDetailsWindow(InteractionContext<ProjectDetailsViewModel, ProjectDetailsViewModel> interaction)
@@ -36,13 +35,6 @@ namespace IridiumEditor.Views
             var dialog = new AboutWindow() {DataContext = interaction.Input};
 
             interaction.SetOutput(await dialog.ShowDialog<AboutWindowViewModel>(this));
-        }
-
-        private Task DoQuitProgram(InteractionContext<Unit, Unit> interaction)
-        {
-            Close();
-            interaction.SetOutput(Unit.Default);
-            return null;
         }
 
         private void InitializeComponent()

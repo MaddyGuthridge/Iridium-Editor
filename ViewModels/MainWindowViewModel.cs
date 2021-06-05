@@ -42,11 +42,7 @@ namespace IridiumEditor.ViewModels
                 await ShowAbout.Handle(about);
             });
 
-            QuitProgram = new Interaction<Unit, Unit>();
-            QuitProgramCommand = ReactiveCommand.Create(() =>
-            {
-                QuitProgram.Handle(Unit.Default);
-            });
+            QuitProgramCommand = ReactiveCommand.Create(() => this);
         }
 
         public Interaction<ProjectDetailsViewModel, ProjectDetailsViewModel> ShowDetails { get; }
@@ -55,9 +51,8 @@ namespace IridiumEditor.ViewModels
         public Interaction<AboutWindowViewModel, AboutWindowViewModel> ShowAbout { get; }
         public ICommand AboutIridiumCommand { get; }
         
-        public Interaction<Unit, Unit> QuitProgram { get; }
-        public ICommand QuitProgramCommand { get; }
-        
+        public ReactiveCommand<Unit, MainWindowViewModel> QuitProgramCommand { get; }
+
         private string GenWindowTitle()
         {
             return _project.details.Name + $" - {Constants.Name}";
