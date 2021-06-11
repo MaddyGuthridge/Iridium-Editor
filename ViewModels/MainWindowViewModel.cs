@@ -70,7 +70,11 @@ namespace IridiumEditor.ViewModels
         public Interaction<AboutWindowViewModel, AboutWindowViewModel> ShowAbout { get; }
         public ICommand AboutIridiumCommand { get; }
 
-        
+        public void NewProjectCommand()
+        {
+            _project = new();
+            WindowTitle = GenWindowTitle();
+        }
         
         public void QuitProgramCommand()
         {
