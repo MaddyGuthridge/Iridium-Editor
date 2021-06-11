@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IridiumEditor.Models
 {
@@ -58,11 +54,11 @@ namespace IridiumEditor.Models
 
     public class ProjectDetailsSerializer
     {
-        public string Name { get; set; }
-        public string Author { get; set; }
-        public string Description { get; set; }
-        public string Copyright { get; set; }
-        
+        public string Name { get; set; } = null!;
+        public string Author { get; set; } = null!;
+        public string Description { get; set; } = null!;
+        public string Copyright { get; set; } = null!;
+
         // number of seconds
         public int WorkingTime { get; set; }
 

@@ -8,7 +8,7 @@ namespace IridiumEditor.Models
     public class Project
     {
         // Project details
-        public ProjectDetails Details;
+        public readonly ProjectDetails Details;
 
         // Create empty project
         public Project()
@@ -19,7 +19,7 @@ namespace IridiumEditor.Models
         public Project(string fileAddress)
         {
             string json = File.ReadAllText(fileAddress);
-            ProjectSerializer p = JsonSerializer.Deserialize<ProjectSerializer>(json);
+            ProjectSerializer p = JsonSerializer.Deserialize<ProjectSerializer>(json) ?? throw new InvalidOperationException();
             
             Details = new ProjectDetails(p.Details);
         }
@@ -38,7 +38,7 @@ namespace IridiumEditor.Models
 
     public class ProjectSerializer
     {
-        public ProjectDetailsSerializer Details { get; set; }
+        public ProjectDetailsSerializer Details { get; set; } = null!;
 
         public ProjectSerializer(Project p)
         {

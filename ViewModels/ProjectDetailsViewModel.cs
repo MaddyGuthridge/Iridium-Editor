@@ -8,7 +8,7 @@ namespace IridiumEditor.ViewModels
 {
     public class ProjectDetailsViewModel : ViewModelBase
     {
-        public readonly ProjectDetails details;
+        public readonly ProjectDetails Details;
 
         private string _name = null!;
 
@@ -53,7 +53,7 @@ namespace IridiumEditor.ViewModels
 
         public ProjectDetailsViewModel(ProjectDetails d)
         {
-            details = d;
+            Details = d;
             InitData();
             
             OkCommand = ReactiveCommand.Create(() =>
@@ -66,19 +66,19 @@ namespace IridiumEditor.ViewModels
 
         public ProjectDetailsViewModel()
         {
-            details = new ProjectDetails();
+            Details = new ProjectDetails();
             InitData();
         }
 
         private void InitData()
         {
-            _name = details.Name;
+            _name = Details.Name;
             _windowTitle = GenWindowTitle();
-            Description = details.Description;
-            Author = details.Author;
-            Copyright = details.Copyright;
+            Description = Details.Description;
+            Author = Details.Author;
+            Copyright = Details.Copyright;
             
-            _workTimeSpan = details.GetWorkingTime();
+            _workTimeSpan = Details.GetWorkingTime();
             _workTime = GenWorkTimeStr();
             // Why does this continue to work when we leave the scope of the constructor?
             DispatcherTimer workTimer = new DispatcherTimer {Interval = TimeSpan.FromSeconds(1)};
@@ -91,10 +91,10 @@ namespace IridiumEditor.ViewModels
 
         private void SaveDetails()
         {
-            details.Name = Name;
-            details.Description = Description;
-            details.Author = Author;
-            details.Copyright = Copyright;
+            Details.Name = Name;
+            Details.Description = Description;
+            Details.Author = Author;
+            Details.Copyright = Copyright;
         }
     }
 }

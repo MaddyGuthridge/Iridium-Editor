@@ -1,9 +1,7 @@
 using System;
-using System.Collections.Generic;
 using System.Reactive;
 using System.Reactive.Linq;
 using System.Windows.Input;
-using Avalonia.Controls;
 using IridiumEditor.Models;
 using ReactiveUI;
 
