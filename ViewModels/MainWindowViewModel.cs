@@ -1,7 +1,9 @@
 using System;
+using System.Collections.Generic;
 using System.Reactive;
 using System.Reactive.Linq;
 using System.Windows.Input;
+using Avalonia.Controls;
 using IridiumEditor.Models;
 using ReactiveUI;
 
@@ -34,6 +36,12 @@ namespace IridiumEditor.ViewModels
                 await ShowDetails.Handle(details);
                 WindowTitle = GenWindowTitle();
             });
+
+            SaveFile = new Interaction<Unit, string>();
+            SaveFileCommand = ReactiveCommand.CreateFromTask(async () =>
+            {
+                _project.Save(await SaveFile.Handle(Unit.Default));
+            });
             
             ShowAbout = new Interaction<AboutWindowViewModel, AboutWindowViewModel>();
             AboutIridiumCommand = ReactiveCommand.CreateFromTask(async () =>
@@ -47,9 +55,14 @@ namespace IridiumEditor.ViewModels
         public Interaction<ProjectDetailsViewModel, ProjectDetailsViewModel> ShowDetails { get; }
         public ICommand ProjectDetailsCommand { get; }
         
+        public Interaction<Unit, string> SaveFile { get; }
+        public ICommand SaveFileCommand { get; }
+        
         public Interaction<AboutWindowViewModel, AboutWindowViewModel> ShowAbout { get; }
         public ICommand AboutIridiumCommand { get; }
 
+        
+        
         public void QuitProgramCommand()
         {
             Environment.Exit(0);

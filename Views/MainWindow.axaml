@@ -49,7 +49,7 @@
       <!--Menu Items-->
       <Menu DockPanel.Dock="Top">
         <MenuItem Header="_File">
-          <MenuItem Header="_Save"/>
+          <MenuItem Header="_Save" Command="{Binding SaveFileCommand}"/>
           <MenuItem Header="_Compile"/>
           <MenuItem Header="Project _Details" Command="{Binding ProjectDetailsCommand}"/>
           <Separator/>
