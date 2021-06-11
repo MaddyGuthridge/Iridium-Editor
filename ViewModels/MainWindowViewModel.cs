@@ -29,7 +29,7 @@ namespace IridiumEditor.ViewModels
             ShowDetails = new Interaction<ProjectDetailsViewModel, ProjectDetailsViewModel>();
             ProjectDetailsCommand = ReactiveCommand.CreateFromTask(async () =>
             {
-                var details = new ProjectDetailsViewModel(_project.details);
+                var details = new ProjectDetailsViewModel(_project.Details);
 
                 await ShowDetails.Handle(details);
                 WindowTitle = GenWindowTitle();
@@ -57,7 +57,7 @@ namespace IridiumEditor.ViewModels
 
         private string GenWindowTitle()
         {
-            return _project.details.Name + $" - {Constants.Name}";
+            return _project.Details.Name + $" - {Constants.Name}";
         }
     }
 }

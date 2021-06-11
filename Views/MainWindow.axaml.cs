@@ -25,7 +25,6 @@ namespace IridiumEditor.Views
         private async Task DoShowDetailsWindow(InteractionContext<ProjectDetailsViewModel, ProjectDetailsViewModel> interaction)
         {
             var dialog = new ProjectDetailsWindow {DataContext = interaction.Input};
-
             interaction.SetOutput(await dialog.ShowDialog<ProjectDetailsViewModel>(this));
         }
         
