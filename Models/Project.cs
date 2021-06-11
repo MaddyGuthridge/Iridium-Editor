@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
+using System.Text.Json;
 
 namespace IridiumEditor.Models
 {
@@ -10,19 +7,39 @@ namespace IridiumEditor.Models
     public class Project
     {
         // Project details
-        public ProjectDetails details;
+        public ProjectDetails Details;
 
         // Create empty project
         public Project()
         {
-            details = new ProjectDetails();
+            Details = new ProjectDetails();
+        }
+        // Open project from file
+        public Project(string fileAddress)
+        {
+            string json = File.ReadAllText(fileAddress);
+            ProjectSerializer p = JsonSerializer.Deserialize<ProjectSerializer>(json);
+            
+            Details = new ProjectDetails(p.Details);
         }
 
         // Saves the project
-        public void Save()
+        public void Save(string fileAddress)
         {
-            // Not implemented
+            ProjectSerializer proj = new(this);
+            var options = new JsonSerializerOptions { WriteIndented = true };
+            string save = JsonSerializer.Serialize(proj, options);
+            File.WriteAllText(fileAddress, save);
         }
+    }
 
+    public class ProjectSerializer
+    {
+        public ProjectDetailsSerializer Details;
+
+        public ProjectSerializer(Project p)
+        {
+            Details = new ProjectDetailsSerializer(p.Details);
+        }
     }
 }
