@@ -21,7 +21,7 @@ namespace IridiumEditor.ViewModels
         public string NoteCount => "Note Count: 17048";
         public string CursorPosition => "13.3.120 : 12";
 
-        private readonly Project _project;
+        private Project _project;
 
         public MainWindowViewModel()
         {
@@ -42,6 +42,13 @@ namespace IridiumEditor.ViewModels
             {
                 _project.Save(await SaveFile.Handle(Unit.Default));
             });
+            OpenFile = new Interaction<Unit, string>();
+            OpenFileCommand = ReactiveCommand.CreateFromTask(async () =>
+            {
+                string f = await OpenFile.Handle(Unit.Default);
+                _project = new Project(f);
+                WindowTitle = GenWindowTitle();
+            });
             
             ShowAbout = new Interaction<AboutWindowViewModel, AboutWindowViewModel>();
             AboutIridiumCommand = ReactiveCommand.CreateFromTask(async () =>
@@ -57,6 +64,8 @@ namespace IridiumEditor.ViewModels
         
         public Interaction<Unit, string> SaveFile { get; }
         public ICommand SaveFileCommand { get; }
+        public Interaction<Unit, string> OpenFile { get; }
+        public ICommand OpenFileCommand { get; }
         
         public Interaction<AboutWindowViewModel, AboutWindowViewModel> ShowAbout { get; }
         public ICommand AboutIridiumCommand { get; }

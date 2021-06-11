@@ -23,6 +23,7 @@ namespace IridiumEditor.Views
             this.WhenActivated(d => d(ViewModel!.ShowDetails.RegisterHandler(DoShowDetailsWindow)));
             this.WhenActivated(d => d(ViewModel!.ShowAbout.RegisterHandler(DoShowAboutWindow)));
             this.WhenActivated(d => d(ViewModel!.SaveFile.RegisterHandler(DoSave)));
+            this.WhenActivated(d => d(ViewModel!.OpenFile.RegisterHandler(DoOpen)));
         }
         
         private async Task DoShowDetailsWindow(InteractionContext<ProjectDetailsViewModel, ProjectDetailsViewModel> interaction)
@@ -55,6 +56,23 @@ namespace IridiumEditor.Views
             saveFileBox.DefaultExtension = "json";
 
             interaction.SetOutput(await saveFileBox.ShowAsync(this));
+        }
+        
+        private async Task DoOpen(InteractionContext<Unit, string> interaction)
+        {
+            OpenFileDialog openFileBox = new OpenFileDialog {Title = "Open Project...", AllowMultiple = false};
+            //SaveFileBox.InitialFileName = Path.GetFullPath(DocumentFileName);
+            //SaveFileBox.Directory = workdir;
+            List<FileDialogFilter> filters = new List<FileDialogFilter>();
+            FileDialogFilter filter = new FileDialogFilter();
+            List<string> extension = new List<string> {"json"};
+            filter.Extensions = extension;
+            filter.Name = "JSON Project Files";
+            filters.Add(filter);
+            openFileBox.Filters = filters;
+
+            string[] output = await openFileBox.ShowAsync(this);
+            interaction.SetOutput(output[0]);
         }
 
         private void InitializeComponent()

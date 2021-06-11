@@ -44,5 +44,10 @@ namespace IridiumEditor.Models
         {
             Details = new ProjectDetailsSerializer(p.Details);
         }
+
+        public ProjectSerializer()
+        {
+            // For JSON Deserialize
+        }
     }
 }

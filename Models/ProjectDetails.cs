@@ -28,6 +28,7 @@ namespace IridiumEditor.Models
             Description = d.Description;
             Copyright = d.Copyright;
             _workingTime = TimeSpan.FromSeconds(d.WorkingTime);
+            _openTime = DateTime.Now;
         }
 
         // Helpers
@@ -73,6 +74,11 @@ namespace IridiumEditor.Models
             Copyright = d.Copyright;
             // Round to nearest second then convert to int
             WorkingTime = (int) Math.Round(d.GetWorkingTime().TotalSeconds);
+        }
+
+        public ProjectDetailsSerializer()
+        {
+            // For JSON Deserialize
         }
     }
 }
