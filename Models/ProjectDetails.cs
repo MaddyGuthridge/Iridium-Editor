@@ -57,13 +57,13 @@ namespace IridiumEditor.Models
 
     public class ProjectDetailsSerializer
     {
-        public string Name;
-        public string Author;
-        public string Description;
-        public string Copyright;
+        public string Name { get; set; }
+        public string Author { get; set; }
+        public string Description { get; set; }
+        public string Copyright { get; set; }
         
         // number of seconds
-        public int WorkingTime;
+        public int WorkingTime { get; set; }
 
         public ProjectDetailsSerializer(ProjectDetails d)
         {

@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Text.Json;
 
 namespace IridiumEditor.Models
@@ -27,15 +28,17 @@ namespace IridiumEditor.Models
         public void Save(string fileAddress)
         {
             ProjectSerializer proj = new(this);
+            // TODO: when this is solid, remove the options to conserve space
             var options = new JsonSerializerOptions { WriteIndented = true };
             string save = JsonSerializer.Serialize(proj, options);
+            //Console.WriteLine("Save Data: " + save);
             File.WriteAllText(fileAddress, save);
         }
     }
 
     public class ProjectSerializer
     {
-        public ProjectDetailsSerializer Details;
+        public ProjectDetailsSerializer Details { get; set; }
 
         public ProjectSerializer(Project p)
         {
